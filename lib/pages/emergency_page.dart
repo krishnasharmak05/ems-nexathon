@@ -63,9 +63,11 @@ class _EmergencyPageState extends State<EmergencyPage> {
   Future<void> initDB() async {
     try {
       db = await mongo.Db.create(
-          '"mongodb+srv://Krishna:Krishna@acr-user-data.3el6t.mongodb.net/?retryWrites=true&w=majority&appName=ACR-user-data"');
+          "mongodb+srv://Krishna:Krishna@acr-user-data.3el6t.mongodb.net/EMS?retryWrites=true&w=majority&appName=ACR-user-data");
       await db.open();
-      collection = db.collection('credential');
+      collection = db.collection('Credentials');
+      // Make sure that collection is initialized before you proceed
+      debugPrint("DB Connection Established, Collection Initialized");
     } catch (e) {
       debugPrint("Error connecting to the database: $e");
     }

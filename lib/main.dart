@@ -1,6 +1,6 @@
-import 'package:EMS/emergency_page.dart';
-import 'package:EMS/home_page.dart';
-import 'package:EMS/info_page.dart';
+import 'package:EMS/pages/emergency_page.dart';
+import 'package:EMS/pages/home_page.dart';
+import 'package:EMS/pages/info_page.dart';
 // import 'package:EMS/loading_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';

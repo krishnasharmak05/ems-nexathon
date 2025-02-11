@@ -1,4 +1,4 @@
-import 'package:ems/utils/navbar_page.dart';
+import 'package:EMS/utils/navbar_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                         Icon(Icons.location_on, color: Colors.white),
                         SizedBox(width: 8),
                         Text(
-                          'Your Location',
+                          'Chennai, IN',
                           style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
                       ],

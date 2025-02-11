@@ -1,5 +1,5 @@
-import 'package:ems/main.dart';
-import 'package:ems/utils/navbar_page.dart';
+import 'package:EMS/main.dart';
+import 'package:EMS/utils/navbar_page.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mongo_dart/mongo_dart.dart' as mongo;
 
@@ -14,8 +14,6 @@ class EmergencyPage extends StatefulWidget {
 
 class _EmergencyPageState extends State<EmergencyPage> {
   double? lat, long;
-// lat: Range = [-90(Southern Hemisphere), +90]
-// long: Range = [-180[Western Hemisphere], 180]
   int selectedIndex = 0;
   late mongo.Db db;
   late mongo.DbCollection collection;
@@ -105,124 +103,107 @@ class _EmergencyPageState extends State<EmergencyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withValues(alpha: 0.5),
-                blurRadius: 10.0,
-                spreadRadius: 5.0,
-              ),
-            ],
-            shape: BoxShape.circle,
-            gradient: RadialGradient(
-              colors: [Colors.green.shade300, Colors.green.shade600],
-              center: Alignment.center,
-              radius: 0.7,
-            ),
-            border: Border.all(
-              color: Colors.green.shade800,
-              width: 4.0,
-            ),
+      // Gradient background for the entire screen
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            colors: [Colors.blue.shade700, Colors.blue.shade900],
+            center: Alignment.center,
+            radius: 0.7,
           ),
-          width: MediaQuery.sizeOf(context).width * 0.8,
-          height: MediaQuery.sizeOf(context).height * 0.35,
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "Are you experiencing an earthquake?",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  letterSpacing: 1.0,
+        ),
+        width: double.infinity,
+        height: double.infinity,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Text at the top
+                Text(
+                  "Are you experiencing an earthquake?",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.0,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: MediaQuery.sizeOf(context).width * 0.3,
-                    height: MediaQuery.sizeOf(context).height * 0.1,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        pushItems("Yes");
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("Emergency Alert Sent!"),
-                            behavior: SnackBarBehavior.floating,
-                            margin: EdgeInsets.only(
-                              bottom: 0,
-                              left: 20,
-                              right: 20,
-                            ),
+                SizedBox(height: 40),
+                // Full-width buttons
+                Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      pushItems("Yes");
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Emergency Alert Sent!"),
+                          behavior: SnackBarBehavior.floating,
+                          margin: EdgeInsets.only(
+                            bottom: 0,
+                            left: 20,
+                            right: 20,
                           ),
-                        );
-                        Navigator.pushNamed(context, "/HomePage");
-                      },
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.green.shade700,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
                         ),
-                        textStyle: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                      );
+                      Navigator.pushNamed(context, "/HomePage");
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.green.shade700,
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      child: Text(
-                        "Yes",
-                      ),
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                     ),
+                    child: Text("Yes"),
                   ),
-                  SizedBox(width: 10),
-                  Container(
-                    width: MediaQuery.sizeOf(context).width * 0.3,
-                    height: MediaQuery.sizeOf(context).height * 0.1,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        pushItems("No");
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("Emergency Alert Sent!"),
-                            behavior: SnackBarBehavior.floating,
-                            margin: EdgeInsets.only(
-                              bottom: 0,
-                              left: 20,
-                              right: 20,
-                            ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      pushItems("No");
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Emergency Alert Sent!"),
+                          behavior: SnackBarBehavior.floating,
+                          margin: EdgeInsets.only(
+                            bottom: 0,
+                            left: 20,
+                            right: 20,
                           ),
-                        );
-                        Navigator.pushNamed(context, "/HomePage");
-                      },
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.red.shade700,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
                         ),
-                        textStyle: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                      );
+                      Navigator.pushNamed(context, "/HomePage");
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.red.shade700,
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      child: Text(
-                        "No",
-                      ),
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                     ),
+                    child: Text("No"),
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
-      // bottomNavigationBar: NavbarPage(4),
     );
   }
 }

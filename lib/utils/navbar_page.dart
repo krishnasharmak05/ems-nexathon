@@ -1,4 +1,4 @@
-import 'package:ems/models/icon_models.dart';
+import 'package:EMS/models/icon_models.dart';
 import 'package:flutter/material.dart';
 
 class NavbarPage extends StatefulWidget {
@@ -61,7 +61,6 @@ class _NavbarPageState extends State<NavbarPage> {
                       setState(() {
                         currentIcon = icon.id;
                       });
-                      print(icon.id);
                       if (icon.id == 0) {
                         Navigator.pushReplacementNamed(context, "/HomePage");
                       } else {

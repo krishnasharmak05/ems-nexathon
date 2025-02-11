@@ -1,4 +1,4 @@
-import 'package:ems/utils/navbar_page.dart';
+import 'package:EMS/utils/navbar_page.dart';
 import 'package:flutter/material.dart';
 
 class InfoPage extends StatefulWidget {
@@ -20,8 +20,8 @@ class _InfoPageState extends State<InfoPage> {
               Container(
                 color: Colors.redAccent,
                 height: MediaQuery.sizeOf(context).height * 0.28,
-                child: Image.network(
-                  "https://www.earthquakecountry.org/library/Drop_Cover_Hold_On_EN_Black_White_RGB.png",
+                child: Image.asset(
+                  "assets/earthquake.png",
                   height: MediaQuery.sizeOf(context).height * 0.28,
                 ),
               ),

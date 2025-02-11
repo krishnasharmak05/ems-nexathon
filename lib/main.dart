@@ -1,7 +1,7 @@
-import 'package:ems/emergency_page.dart';
-import 'package:ems/home_page.dart';
-import 'package:ems/info_page.dart';
-// import 'package:ems/loading_page.dart';
+import 'package:EMS/emergency_page.dart';
+import 'package:EMS/home_page.dart';
+import 'package:EMS/info_page.dart';
+// import 'package:EMS/loading_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 // import 'package:geolocator/geolocator.dart';
@@ -68,7 +68,7 @@ class _LoadingPageState extends State<LoadingPage> {
 try{
     _setupFirebaseMessaging();
 }catch(e){
-  debugPrint(e.toString());
+  debugPrint("e.toString()");
 }
 
     //   messaging.getToken().then((String? token) {

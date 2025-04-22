@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -175,11 +176,12 @@
         }
     </style>
 </head>
+
 <body>
     <div class="dashboard-container">
         <div class="map-section">
             <div id="map"></div>
-            
+
             <div class="controls-panel">
                 <div class="control-input">
                     <label>Epicenter Latitude</label>
@@ -221,16 +223,16 @@
                 </div>
             </div>
             <div class="chat-input">
-                <input type="text" placeholder="Type your message..." id="messageInput" 
-                       onkeypress="if(event.key === 'Enter') sendMessage()">
+                <input type="text" placeholder="Type your message..." id="messageInput"
+                    onkeypress="if(event.key === 'Enter') sendMessage()">
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script>
-        function findRegion(){
-            window.location.href="super.html"
+        function findRegion() {
+            window.location.href = "super.html"
         }
         // Initialize map
         const map = L.map('map').setView([12.8406, 80.1534], 13);
@@ -238,17 +240,18 @@
         let showInterior = true, showExterior = true;
 
         // Add the satellite layer
-        L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg', {
+        L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg?api_key=262b3271-f633-44d3-8b31-0d53460cad2a', {
             maxZoom: 20,
             attribution: '&copy; Stadia Maps'
         }).addTo(map);
+
 
         // Update radius display
         function updateRadiusDisplay() {
             const totalRadius = parseFloat(document.getElementById('totalRadius').value);
             const interiorRadius = (totalRadius / 3).toFixed(1);
             const exteriorRadius = totalRadius.toFixed(1);
-            
+
             document.getElementById('interiorRadiusDisplay').textContent = interiorRadius;
             document.getElementById('exteriorRadiusDisplay').textContent = exteriorRadius;
         }
@@ -258,7 +261,7 @@
             const lat = parseFloat(document.getElementById('lat').value);
             const lng = parseFloat(document.getElementById('lng').value);
             const totalRadius = parseFloat(document.getElementById('totalRadius').value);
-            
+
             // Calculate interior and exterior radii
             const interiorRadius = (totalRadius / 3) * 1000; // Convert to meters
             const exteriorRadius = totalRadius * 1000; // Convert to meters
@@ -342,7 +345,7 @@
         updateZones();
 
         // Map click handler for setting epicenter
-        map.on('click', function(e) {
+        map.on('click', function (e) {
             document.getElementById('lat').value = e.latlng.lat.toFixed(4);
             document.getElementById('lng').value = e.latlng.lng.toFixed(4);
             updateZones();
@@ -352,4 +355,5 @@
         document.getElementById('totalRadius').addEventListener('input', updateRadiusDisplay);
     </script>
 </body>
+
 </html>
